@@ -45,8 +45,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-fg-115">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ndU-9l-vUs" userLabel="Bottom Text">
+                                <rect key="frame" x="0.0" y="691.33333333333337" width="393" height="45.666666666666629"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="BOTTOM">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="36" name="Impact"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-mQ-sRr">
-                                <rect key="frame" x="0.0" y="133" width="393" height="45.666666666666629"/>
+                                <rect key="frame" x="0.0" y="135" width="393" height="45.666666666666657"/>
                                 <attributedString key="attributedText">
                                     <fragment content="TOP">
                                         <attributes>
@@ -68,16 +81,21 @@
                             <constraint firstItem="3uA-nE-ZnJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fo6-FD-DwJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TIb-mQ-sRr" secondAttribute="trailing" id="H9x-4F-BZ2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g5y-fg-115" secondAttribute="trailing" id="OPi-nb-pFb"/>
+                            <constraint firstItem="ndU-9l-vUs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V3S-V2-bIW"/>
                             <constraint firstItem="Jam-xB-56V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XqH-FT-feH"/>
                             <constraint firstItem="3uA-nE-ZnJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gux-eY-zBX"/>
                             <constraint firstItem="TIb-mQ-sRr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hxn-eY-YQs"/>
                             <constraint firstItem="3uA-nE-ZnJ" firstAttribute="top" secondItem="g5y-fg-115" secondAttribute="bottom" id="m0T-XB-WjD"/>
+                            <constraint firstItem="3uA-nE-ZnJ" firstAttribute="top" secondItem="ndU-9l-vUs" secondAttribute="bottom" constant="32" id="ncE-WN-FbA"/>
                             <constraint firstItem="g5y-fg-115" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="t5j-aL-zlQ"/>
                             <constraint firstItem="3uA-nE-ZnJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vS2-8p-rW1"/>
-                            <constraint firstItem="TIb-mQ-sRr" firstAttribute="top" secondItem="g5y-fg-115" secondAttribute="top" constant="30" id="z5O-lc-Sdo"/>
+                            <constraint firstItem="3uA-nE-ZnJ" firstAttribute="top" secondItem="g5y-fg-115" secondAttribute="bottom" id="viG-wC-NG8"/>
+                            <constraint firstItem="ndU-9l-vUs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vul-45-Or2"/>
+                            <constraint firstItem="TIb-mQ-sRr" firstAttribute="top" secondItem="Jam-xB-56V" secondAttribute="bottom" constant="32" id="z5O-lc-Sdo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomText" destination="ndU-9l-vUs" id="5ly-ic-DoR"/>
                         <outlet property="cameraButton" destination="NVc-oQ-nfJ" id="WPx-jO-mGO"/>
                         <outlet property="imageView" destination="g5y-fg-115" id="3hQ-z4-5kt"/>
                         <outlet property="topText" destination="TIb-mQ-sRr" id="qD7-dk-MTD"/>
