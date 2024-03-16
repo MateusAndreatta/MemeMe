@@ -7,14 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
     
-    let memeTextAttributes: [NSAttributedString.Key: Any] = [
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomTollbar: UIToolbar!
+    
+    private var shouldChangeViewPosition = false
+    
+    private let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
@@ -44,6 +49,8 @@ class ViewController: UIViewController {
         bottomText.textAlignment = .center
         topText.delegate = self
         bottomText.delegate = self
+        topText.tag = 1
+        bottomText.tag = 2
     }
     
     private func subscribeToKeyboardNotifications() {
@@ -53,18 +60,21 @@ class ViewController: UIViewController {
 
     private func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if shouldChangeViewPosition {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
+        if shouldChangeViewPosition {
+            view.frame.origin.y = 0
+        }
     }
     
-        
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
@@ -72,24 +82,49 @@ class ViewController: UIViewController {
     }
     
     @IBAction func albumButtonTap(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
+        showPickerController(for: .photoLibrary)
     }
     
     
     @IBAction func cameraButtonTap(_ sender: Any) {
+        showPickerController(for: .camera)
+    }
+    
+    private func showPickerController(for type: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = type
         present(imagePicker, animated: true, completion: nil)
     }
     
-}
-
-extension ViewController: UINavigationControllerDelegate {
+    @IBAction func shareButtonTap(_ sender: Any) {
+        let meme = save()
+        let ac = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        present(ac, animated: true)
+    }
     
+    private func save() -> Meme {
+        return Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+    }
+    
+    private func generateMemedImage() -> UIImage {
+        
+        shouldShowToolbar(false)
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        shouldShowToolbar(true)
+        return memedImage
+    }
+    
+    private func shouldShowToolbar(_ show: Bool) {
+        topToolbar.isHidden = !show
+        bottomTollbar.isHidden = !show
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate {
@@ -97,6 +132,7 @@ extension ViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imageView.image = image
+            imageView.contentMode = .scaleAspectFit
         }
         dismiss(animated: true)
     }
@@ -105,13 +141,22 @@ extension ViewController: UIImagePickerControllerDelegate {
 
 extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 2 {
+            shouldChangeViewPosition = true
+        }
         textField.text = ""
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if !textField.hasText {
-            textField.text = "TEXT"
+            if textField.tag == 1 {
+                textField.text = "TOP"
+            }
+            if textField.tag == 2 {
+                textField.text = "BOTTOM"
+            }
         }
+        shouldChangeViewPosition = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

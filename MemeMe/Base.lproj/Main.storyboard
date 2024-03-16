@@ -37,8 +37,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jam-xB-56V">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="CtA-kH-OCu"/>
+                                    <barButtonItem systemItem="action" id="CtA-kH-OCu">
+                                        <connections>
+                                            <action selector="shareButtonTap:" destination="BYZ-38-t0r" id="W55-Hq-ItM"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="emG-Jy-aaO"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fpA-rm-EHE"/>
                                     <barButtonItem systemItem="cancel" id="U9U-sa-J7t"/>
                                 </items>
                             </toolbar>
@@ -96,9 +101,11 @@
                     </view>
                     <connections>
                         <outlet property="bottomText" destination="ndU-9l-vUs" id="5ly-ic-DoR"/>
+                        <outlet property="bottomTollbar" destination="3uA-nE-ZnJ" id="swt-Ik-rcE"/>
                         <outlet property="cameraButton" destination="NVc-oQ-nfJ" id="WPx-jO-mGO"/>
                         <outlet property="imageView" destination="g5y-fg-115" id="3hQ-z4-5kt"/>
                         <outlet property="topText" destination="TIb-mQ-sRr" id="qD7-dk-MTD"/>
+                        <outlet property="topToolbar" destination="Jam-xB-56V" id="B8M-5F-xMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
