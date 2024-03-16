@@ -28,8 +28,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        setupTexts()
+        setupTextField(textField: topText, tag: 1)
+        setupTextField(textField: bottomText, tag: 2)
+        setupCamera()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,16 +42,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    private func setupCamera() {
+        #if targetEnvironment(simulator)
+        cameraButton.isEnabled = false
+        #else
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        #endif
+    }
 
-    private func setupTexts() {
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        topText.textAlignment = .center
-        bottomText.textAlignment = .center
-        topText.delegate = self
-        bottomText.delegate = self
-        topText.tag = 1
-        bottomText.tag = 2
+    private func setupTextField(textField: UITextField, tag: Int) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
+        textField.tag = tag
     }
     
     private func subscribeToKeyboardNotifications() {
@@ -98,13 +103,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func shareButtonTap(_ sender: Any) {
-        let meme = save()
-        let ac = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        let meme = generateMemedImage()
+        let ac = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        ac.completionWithItemsHandler = {_, completed, _, _ in
+            if completed {
+                self.save()
+            }
+        }
         present(ac, animated: true)
     }
     
-    private func save() -> Meme {
-        return Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+    private func save() {
+        let _ = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
     }
     
     private func generateMemedImage() -> UIImage {
@@ -160,7 +170,7 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
     }
 }
