@@ -27,10 +27,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
-    func configureItems() {
+    private func configureItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
     }
     

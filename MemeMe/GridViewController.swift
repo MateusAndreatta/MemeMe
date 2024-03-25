@@ -27,10 +27,23 @@ class GridViewController: UIViewController, UICollectionViewDelegate, UICollecti
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        
+        navigationController?.navigationBar.tintColor = .black
+        configureItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         collectionView.reloadData()
+    }
+    
+    private func configureItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+    }
+    
+    @objc func didTapAddButton() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewMeme") as! ViewController
+        present(vc, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
