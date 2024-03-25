@@ -95,6 +95,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         showPickerController(for: .camera)
     }
     
+    @IBAction func cancelButtonTap(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    
     private func showPickerController(for type: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self

@@ -17,6 +17,7 @@
 		39F92C442BABA4B000C92B09 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C432BABA4B000C92B09 /* ListViewController.swift */; };
 		39F92C462BB0BBA600C92B09 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C452BB0BBA600C92B09 /* GridViewController.swift */; };
 		39F92C482BB0BE9800C92B09 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C472BB0BE9800C92B09 /* GridViewCell.swift */; };
+		39F92C4A2BB104F200C92B09 /* ShowMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C492BB104F200C92B09 /* ShowMemeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		39F92C432BABA4B000C92B09 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		39F92C452BB0BBA600C92B09 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		39F92C472BB0BE9800C92B09 /* GridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
+		39F92C492BB104F200C92B09 /* ShowMemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				39F92C432BABA4B000C92B09 /* ListViewController.swift */,
 				39F92C452BB0BBA600C92B09 /* GridViewController.swift */,
 				39F92C472BB0BE9800C92B09 /* GridViewCell.swift */,
+				39F92C492BB104F200C92B09 /* ShowMemeViewController.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				39F92C322B9FE9A700C92B09 /* ViewController.swift in Sources */,
 				39F92C482BB0BE9800C92B09 /* GridViewCell.swift in Sources */,
 				39F92C422BA3E1C300C92B09 /* Meme.swift in Sources */,
+				39F92C4A2BB104F200C92B09 /* ShowMemeViewController.swift in Sources */,
 				39F92C462BB0BBA600C92B09 /* GridViewController.swift in Sources */,
 				39F92C2E2B9FE9A700C92B09 /* AppDelegate.swift in Sources */,
 				39F92C442BABA4B000C92B09 /* ListViewController.swift in Sources */,

@@ -63,7 +63,11 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="emG-Jy-aaO"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="fpA-rm-EHE"/>
-                                    <barButtonItem systemItem="cancel" id="U9U-sa-J7t"/>
+                                    <barButtonItem systemItem="cancel" id="U9U-sa-J7t">
+                                        <connections>
+                                            <action selector="cancelButtonTap:" destination="BYZ-38-t0r" id="L74-2i-HTM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-fg-115">
@@ -160,6 +164,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="ply-vu-Bk6"/>
                     <connections>
                         <outlet property="tableView" destination="8YJ-vu-JK1" id="9L0-gW-DjH"/>
+                        <segue destination="T6E-iG-fqV" kind="show" identifier="ShowMeme2Segue" id="MHf-u3-nUK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="set-eh-ede" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -233,11 +238,42 @@
                     <connections>
                         <outlet property="collectionView" destination="eSE-Nk-XMW" id="kgC-wa-J6F"/>
                         <outlet property="flowLayout" destination="LpJ-Kc-wNa" id="gQM-Ne-C2U"/>
+                        <segue destination="T6E-iG-fqV" kind="show" identifier="ShowMemeSegue" id="gWS-oU-54E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dc-60-OsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="734" y="230"/>
+        </scene>
+        <!--Show Meme View Controller-->
+        <scene sceneID="m5R-kx-5cf">
+            <objects>
+                <viewController id="T6E-iG-fqV" customClass="ShowMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MGs-9k-jZr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-Ls-Yfy">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Q1r-Y9-Ygf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q1r-Y9-Ygf" firstAttribute="bottom" secondItem="0Pa-Ls-Yfy" secondAttribute="bottom" id="1lh-0t-CND"/>
+                            <constraint firstItem="0Pa-Ls-Yfy" firstAttribute="leading" secondItem="Q1r-Y9-Ygf" secondAttribute="leading" id="RXb-Xg-iHg"/>
+                            <constraint firstItem="Q1r-Y9-Ygf" firstAttribute="trailing" secondItem="0Pa-Ls-Yfy" secondAttribute="trailing" id="UQ2-7N-lkY"/>
+                            <constraint firstItem="0Pa-Ls-Yfy" firstAttribute="top" secondItem="Q1r-Y9-Ygf" secondAttribute="top" id="j6u-iS-NTz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yf9-YH-p2p"/>
+                    <connections>
+                        <outlet property="imageView" destination="0Pa-Ls-Yfy" id="QiI-5u-DJt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ToU-7P-Cmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1749" y="230"/>
         </scene>
         <!--Grid-->
         <scene sceneID="YDj-3k-F2x">
@@ -257,6 +293,9 @@
             <point key="canvasLocation" x="-132" y="230"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MHf-u3-nUK"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>

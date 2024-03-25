@@ -13,6 +13,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var selectedMeme: Meme? = nil
+    
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -51,5 +53,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return memes.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMeme = memes[indexPath.row]
+        performSegue(withIdentifier: "ShowMeme2Segue", sender: self)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! ShowMemeViewController
+        if let selectedMeme {
+            controller.setup(with: selectedMeme)
+        }
+    }
 }
