@@ -114,7 +114,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func save() {
-        let _ = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        guard let topText = topText.text, let bottomText = bottomText.text, let originalImage = imageView.image else { return }
+        let meme = Meme(topText: topText, bottomText: bottomText, originalImage: originalImage, memedImage: generateMemedImage())
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     private func generateMemedImage() -> UIImage {

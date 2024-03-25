@@ -14,6 +14,9 @@
 		39F92C372B9FE9A900C92B09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39F92C362B9FE9A900C92B09 /* Assets.xcassets */; };
 		39F92C3A2B9FE9A900C92B09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39F92C382B9FE9A900C92B09 /* LaunchScreen.storyboard */; };
 		39F92C422BA3E1C300C92B09 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C412BA3E1C300C92B09 /* Meme.swift */; };
+		39F92C442BABA4B000C92B09 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C432BABA4B000C92B09 /* ListViewController.swift */; };
+		39F92C462BB0BBA600C92B09 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C452BB0BBA600C92B09 /* GridViewController.swift */; };
+		39F92C482BB0BE9800C92B09 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F92C472BB0BE9800C92B09 /* GridViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		39F92C392B9FE9A900C92B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39F92C3B2B9FE9A900C92B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39F92C412BA3E1C300C92B09 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		39F92C432BABA4B000C92B09 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		39F92C452BB0BBA600C92B09 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		39F92C472BB0BE9800C92B09 /* GridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				39F92C382B9FE9A900C92B09 /* LaunchScreen.storyboard */,
 				39F92C3B2B9FE9A900C92B09 /* Info.plist */,
 				39F92C412BA3E1C300C92B09 /* Meme.swift */,
+				39F92C432BABA4B000C92B09 /* ListViewController.swift */,
+				39F92C452BB0BBA600C92B09 /* GridViewController.swift */,
+				39F92C472BB0BE9800C92B09 /* GridViewCell.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -142,8 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				39F92C322B9FE9A700C92B09 /* ViewController.swift in Sources */,
+				39F92C482BB0BE9800C92B09 /* GridViewCell.swift in Sources */,
 				39F92C422BA3E1C300C92B09 /* Meme.swift in Sources */,
+				39F92C462BB0BBA600C92B09 /* GridViewController.swift in Sources */,
 				39F92C2E2B9FE9A700C92B09 /* AppDelegate.swift in Sources */,
+				39F92C442BABA4B000C92B09 /* ListViewController.swift in Sources */,
 				39F92C302B9FE9A700C92B09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
